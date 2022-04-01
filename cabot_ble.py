@@ -722,7 +722,8 @@ def main():
         logger.info(traceback.format_exc())
     finally:
         try:
-            driver.stop()
+            if driver:
+                driver.stop()
             battery_thread.join()
             ble_manager.stop()
             ble_manager._main_loop.quit()
